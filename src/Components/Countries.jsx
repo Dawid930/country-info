@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import Modal from './Modal';
 
 function Countries() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null)
     const [allCountries, setAllCountries] = useState([]);
+    const [popup, setPopup] = useState(false)
 
     useEffect(() => {
         fetch("https://restcountries.com/v3.1/all")
@@ -35,12 +37,17 @@ function Countries() {
     } else {
         return (
             <div className='container'>
-                {subset.map(country => (
-                <div>
-                <img src={country.flags.png} alt='countryflag'/>
-                <h3 key={country.car.cca2}>
+                {subset.map((country, i) => (
+                <div onClick={() => 
+                    setPopup(true)}>
+                    <img src={country.flags.png} alt='countryflag'/>
+                    <h3 key={i}>
                     {country.name.common} 
-                </h3>
+                    </h3>
+                    <Modal
+                        open={popup}
+                        onClose={() => setPopup(false)}
+                        countryData={country}/>
                 </div>
                 ))}
             </div>
