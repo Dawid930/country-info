@@ -26,9 +26,13 @@ function Countries() {
 
     
 
-    let startIndex = 0;
-    let endIndex = 16;
+    let startIndex = 200;
+    let endIndex = 216;
     let subset = allCountries.slice(startIndex, endIndex)
+    
+    const onClickHandler = () => {
+        setPopup(true)
+    }
 
     if (error) {
         return <div>Error: {error.message}</div>;
@@ -38,14 +42,15 @@ function Countries() {
         return (
             <div className='container'>
                 {subset.map((country, i) => (
-                <div onClick={() => 
-                    setPopup(true)}>
+                <div className='country' key={i}>
                     <img src={country.flags.png} alt='countryflag'/>
-                    <h3 key={i}>
-                    {country.name.common} 
+                    <h3>
+                    {country.name.common}
                     </h3>
+                    <button className='button' onClick={onClickHandler}>Read more</button>
                     <Modal
-                        open={popup}
+                        open={i}
+                        popupState={popup}
                         onClose={() => setPopup(false)}
                         countryData={country}/>
                 </div>

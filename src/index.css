@@ -35,6 +35,84 @@ border-radius: 0;
 
 /* END OF CSS RESET */
 
+body{
+    width: 100%;
+    margin: auto;
+    background-color: #f8f8f8;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 65px;
+  background: linear-gradient(90deg, #404040 1.18%, #d2d2d2 100%);
+  color: white;
+  padding: 20px;
+  justify-content: center;
+}
+
+.header img {
+  height: 100%;
+  margin-right: 6px;
+}
+
+.header h2 {
+  font-size: 1.25rem;
+  margin-right: auto;
+  
+}
+
+.container {
+  display: flex;
+  padding: 50px;
+  flex-flow: wrap;
+  justify-content: center;
+  width: 100%;
+  background-color: #f8f8f8;
+  gap: 60px;
+}
+
+.country {
+  display: flex;
+  width: 250px;
+  height: 150px;
+  max-width: 1200px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  line-height: 45px;
+
+  background-color: #eeeeee;
+  border-radius: 10px;
+  
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 400;
+  color: #000000;
+}
+
+.country:hover {
+  background-color: #bbb9b9;
+  transform: scale(1.1);
+}
+
+.country img {
+  width: 100px;
+  height: 50px;
+}
+
+.button{
+  border: 1px solid #000000;
+  background-color: #cccccc;
+  border-radius: 10px;
+  padding: 2px 10px 2px 10px;
+}
+
+
+
+
+
+/* MODAL */ 
 
 
 .overlay {
