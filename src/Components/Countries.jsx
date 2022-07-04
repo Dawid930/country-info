@@ -5,7 +5,10 @@ function Countries() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null)
     const [allCountries, setAllCountries] = useState([]);
-    const [popup, setPopup] = useState(false)
+    const [popup, setPopup] = useState(false);
+    const [selectedCountry, setSelectedCountry] = useState(null);
+
+    const i = 1;
 
     useEffect(() => {
         fetch("https://restcountries.com/v3.1/all")
@@ -28,9 +31,10 @@ function Countries() {
 
     let startIndex = 200;
     let endIndex = 216;
-    let subset = allCountries.slice(startIndex, endIndex)
+    let subset = allCountries.slice(startIndex, endIndex) // elotte levo es utanalevo slice egy uj listaba concat es amit kitoroltem nem lesz benne, ha vanvaltozas a rectben kell uj obj kell
     
-    const onClickHandler = () => {
+    const createHandlerForCountry = (country) => () => {
+        setSelectedCountry(country)
         setPopup(true)
     }
 
@@ -41,22 +45,21 @@ function Countries() {
     } else {
         return (
             <div className='container'>
-                {subset.map((country, i) => (
-                <div className='country' key={i}>
+                {subset.map((country) => (
+                <div className='country' key={country.name.common}>
                     <img src={country.flags.png} alt='countryflag'/>
                     <h3>
                     {country.name.common}
                     </h3>
-                    <button className='button' onClick={onClickHandler}>Read more</button>
-                    <Modal
-                        open={i}
-                        popupState={popup}
-                        onClose={() => setPopup(false)}
-                        countryData={country}/>
+                    <button className='button' onClick={createHandlerForCountry(country)}>Read more</button>
+                   
                 </div>
                 ))}
+                 <Modal
+                        popupState={popup}
+                        onClose={() => setPopup(false)}
+                        countryData={selectedCountry}/>
             </div>
-            
         );
     }
 }
