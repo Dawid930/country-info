@@ -23,8 +23,6 @@ function Countries() {
       );
   }, []);
 
-  console.log(allCountries[2]);
-
   let startIndex = 200;
   let endIndex = 216;
   let subset = allCountries.slice(startIndex, endIndex);
@@ -60,6 +58,6 @@ function Countries() {
         />
       </div>
     );
-  };
-};
+  }
+}
 export default Countries;
