@@ -8,8 +8,6 @@ function Countries() {
   const [popup, setPopup] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState(null);
 
-  const i = 1;
-
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
       .then((res) => res.json())
@@ -62,6 +60,6 @@ function Countries() {
         />
       </div>
     );
-  }
-}
+  };
+};
 export default Countries;
